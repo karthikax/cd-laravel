@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return 'welcome'; });
+
+Route::get('/articles', 'ArticleController@listAll');
+Route::get('/articles/{id}', 'ArticleController@view');
+Route::get('/articles/{id}/author', 'ArticleController@viewAuthor');
+Route::post('/articles/create', 'ArticleController@create');
+Route::post('/articles/{id}', 'ArticleController@edit');
+Route::delete('/articles/{id}', 'ArticleController@delete');
+
+Route::get('/author/{uid}/articles', 'ArticleController@viewAuthorsArticles');
